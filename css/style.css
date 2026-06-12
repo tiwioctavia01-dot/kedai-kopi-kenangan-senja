@@ -174,14 +174,16 @@ body{
     font-size: 1.2rem;
 }
 
-.shopping-cart .remove-item{
-    position: absolute;
-    right: 1.5rem;
+.shopping-cart .cart-item #add,
+.shopping-cart .cart-item #remove{
+    display: inline-block;
+    padding: 2px 5px;
     cursor: pointer;
-}
-
-.shopping-cart .remove-item:hover{
-    color: var(--primary);
+    margin: 0 8px;
+    background-color: black;
+    color:white; 
+    font-weight: bold;
+    font-size: 1,1rem;
 }
 
 /* Hero Section */
@@ -213,7 +215,7 @@ body{
 }  */
 
 .hero .content {
-    padding: 1.7rem 7%;
+    padding: 1.4rem 7%;
     max-width: 60rem; 
     position: fixed; 
     z-index: 1;
@@ -331,7 +333,7 @@ body{
 .menu p {
     max-width: 60rem; 
     margin-bottom: 5rem;
-    font-size: 1.4rem;  /* <-- KITA GEDEIN DI SINI (Default-nya 1.4rem) */
+    font-size: 1.4rem;  
     line-height: 1.8;
 }
 
@@ -439,9 +441,9 @@ body{
     object-fit: contain;
 }
 .products .product-card img {
-  width: 100%;       /* Gambar akan melebar maksimal seukuran kotak pembungkusnya */
-  height: 24rem;      /* Tinggi gambar otomatis proporsional agar tidak lonjong/gepeng */
-  object-fit: cover; /* Memastikan gambar terpotong rapi jika rasionya berbeda */
+  width: 100%;       
+  height: 24rem;      
+  object-fit: cover; 
 }
 
 .products .product-content h3{
@@ -529,7 +531,7 @@ body{
 
 /* Efek saat tombol ditekan/diklik */
 .contact .row form .btn:active {
-    transform: translateY(0); /* Tombol kembali turun saat ditekan (efek membal) */
+    transform: translateY(0); 
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -611,57 +613,6 @@ footer .credit a {
     right: 1rem;
 }
 
-/* modal animasi*/
-@keyframes animateModal {
-    from{
-        top: -300px;
-        opacity: 0;
-    }
-    to{
-        top: 0;
-        opacity: 1;
-    }
-}
-
-.modal-content{
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 2rem;
-    text-align: left;
-    flex-direction: row;
-}
-
-.modal-content img{
-    height: auto;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-    max-width: 100%;
-
-}
-
-.modal-content p{
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-    margin-top: 1.2rem;
-}
-
-.modal-content a{
-    display: flex;
-    gap: 1rem;
-    width: 12rem;
-    background-color: var(--primary);
-    color: #fff;
-    margin-top: 1rem;
-    padding: 1rem 1.6rem;
-
-}
-
-.modal-content .product-content {
-    padding: 1rem;
-    width: 55%;
-}
-
 /* Media queries */
 
 /* Laptop */
@@ -677,107 +628,126 @@ footer .credit a {
         font-size: 62.5%;
     }
 
-  #hamburger-menu{
-    display: inline-block; 
-  }  
+    #hamburger-menu{
+        display: inline-block; 
+    }   
 
+    .navbar .navbar-nav{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: #fff; 
+        width: 30rem;
+        height: 100vh;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column; 
+        padding-top:2rem ;
+    } 
 
-   .navbar .navbar-nav{
-    position: absolute;
-    top: 100%;
-    right: -100%;
-    background-color: #fff; 
-    width: 30rem;
-    height: 100vh;
-    transition: 0.3s;
-    display: flex;
-    flex-direction: column; 
-    padding-top:2rem ;
-     } 
+    .navbar .navbar-nav.active{
+        right: 0;
+    }  
 
-   .navbar .navbar-nav.active{
-    right: 0;
-   }  
+    .navbar-nav a { 
+        color: var(--bg) !important;
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem !important;
+    } 
 
-  .navbar-nav a { 
-    color: var(--bg) !important;
-    display: block;
-    margin: 1.5rem;
-    padding: 0.5rem;
-    font-size: 2rem !important;
-  } 
-
-
- .navbar .navbar-nav a::after{
-    transform-origin: 0 0;
- }
-
-  .navbar .navbar-nav a:hover::after{
-    transform: scaleX(0.2);
- }
-
- .navbar .search-form{
-    width: 90%;
-    right: 2rem;
-
- }
-
-.about .row {
-    flex-wrap: wrap;
-}
-
-.about .row .about-img img{
-    height: 24rem;
-    object-fit: cover;
-    object-position: center;
-}
-
-.about .row .content{
-    padding: 0;
-
-}
- .about .row .content h3{
-    margin-top: 1rem;
-    font-size: 2rem;
- }
-
-.about .row .content p{
-    font-size: 1.6rem;
-}
-
-.menu p{
-    font-size: 1.2rem;
-}
-
-.contact .row{
-    flex-wrap: wrap;
-}
-
-.contact .row .map{
-    height: 30rem;
-}
-.contact .row form{
-    padding-top: 0;
-}
-
-.modal-content{
-    flex-wrap: wrap;
-}
-
-.modal-content .product-content {
-        width: 100%;
-        padding: 2rem; /* Beri jarak agar teks tidak mepet ke pinggir */
+    .navbar .navbar-nav a::after{
+        transform-origin: 0 0;
     }
 
-.modal-content img{
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(0.2);
+    }
+
+    .navbar .search-form{
+        width: 90%;
+        right: 2rem;
+    }
+
+    .about .row {
+        flex-wrap: wrap;
+    }
+
+    .about .row .about-img img{
+        height: 24rem;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .about .row .content{
+        padding: 0;
+    }
+
+    .about .row .content h3{
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+
+    .about .row .content p{
+        font-size: 1.6rem;
+    }
+
+    .contact .row{
+        flex-wrap: wrap;
+    }
+
+    .contact .row .map{
+        height: 30rem;
+    }
+
+    .contact .row form{
+        padding-top: 0;
+    }
+
+    .modal-content{
+        flex-wrap: wrap;
+    }
+
+    .modal-content .product-content {
+        width: 100%;
+        padding: 2rem; 
+    }
+
+    .modal-content img{
         width:100%;
         height: auto;
         object-fit: cover;
+    }
+
+    .menu p, .products p {
+        font-size: 1.2rem;
+    }
+
+    .menu .row,
+    .products .row {
+        display: flex ;
+        flex-wrap: wrap ;
+        justify-content: center ;
+        gap: 3rem ; 
+    }
+
+    .menu-card,
+    .products .product-card {
+        flex: 1 1 280px ; 
+        max-width: 300px ;
+    }
+
+    .products .product-image img {
+        width: 100% ;
+        height: auto ;
+        object-fit: cover ;
+    }
 } 
-/* Mobile phone */
+
+/* Mobile phone*/
 @media (max-width: 450px){
     html{
         font-size: 55%;
     }
-  } 
 }

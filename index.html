@@ -53,14 +53,22 @@
     <!-- search form end -->
 
     <!-- shopping cart start -->
-        <div class="shopping-cart">
+    <div class="shopping-cart">
+            <template x-for="(item, index) in $store.cart.items" x-key="index">
             <div class="cart-item">
-                <img src="img/product/1.jpg" alt="">
+                <img :src="`img/product/${item.img}`" :alt="item.name">
                 <div class="item-detail">
-                    <h3>Produk 1</h3>
-                    <div class="item-price">IDR 30K</div>
+                    <h3 x-text="item.name"></h3>
+                    <div class="item-price">
+                        <span x-text="rupiah (item.price)"></span> &times;
+                        <button id="remove">&minus;</button>
+                        <span x-text="item.quantity"></span>
+                        <button id="add">&plus;</button> &equals;
+                        <span x-text="item.total"></span>
+                    </div>
                 </div>
-            </div>
+            </div>  
+            </template>
         </div>
     <!-- shopping cart end -->
 
